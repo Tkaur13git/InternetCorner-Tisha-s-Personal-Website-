@@ -6,15 +6,19 @@
     <title>Tisha Kaur | CS Student at UGA Morehead Honors College</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* CSS Variables */
+        /* CSS Variables - Custom Color Palette */
         :root {
-            --primary: #0055a2; /* UGA Red */
-            --secondary: #ba0c2f; /* UGA Black */
-            --accent: #ffd100; /* UGA Gold */
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
+            --black: #000000;
+            --dark-cyan: #1b6d6d;
+            --azure: #55a2e6;
+            --pastel-gray-cyan: #a0d7d3;
+            --light-azure: #e6f0f8;
+            --yellow: #ffcb05;
+            --light-purple: #bac3f4;
+            --white: #ffffff;
             --transition: all 0.3s ease;
+            --gradient: linear-gradient(135deg, var(--dark-cyan) 0%, var(--azure) 100%);
+            --gradient-dark: linear-gradient(135deg, #155454 0%, #3a8bd6 100%);
         }
 
         /* Base Styles */
@@ -31,11 +35,13 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
+            color: var(--black);
+            background-color: var(--light-azure);
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4 {
+            font-family: 'Times New Roman', Times, serif;
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 1rem;
@@ -59,7 +65,8 @@
             left: 0;
             width: 60px;
             height: 4px;
-            background: var(--accent);
+            background: var(--yellow);
+            border-radius: 2px;
         }
 
         p {
@@ -68,12 +75,12 @@
 
         a {
             text-decoration: none;
-            color: var(--primary);
+            color: var(--azure);
             transition: var(--transition);
         }
 
         a:hover {
-            color: var(--secondary);
+            color: var(--dark-cyan);
         }
 
         section {
@@ -89,34 +96,35 @@
         .btn {
             display: inline-block;
             padding: 0.8rem 1.8rem;
-            background: var(--primary);
+            background: var(--dark-cyan);
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 30px;
             cursor: pointer;
             font-weight: 600;
             transition: var(--transition);
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(27, 109, 109, 0.3);
         }
 
         .btn:hover {
-            background: var(--secondary);
+            background: var(--azure);
             color: white;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(27, 109, 109, 0.4);
         }
 
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
+            border: 2px solid white;
+            color: white;
         }
 
         .btn-outline:hover {
-            background: var(--primary);
-            color: white;
+            background: white;
+            color: var(--dark-cyan);
         }
 
         .section-title {
@@ -136,14 +144,14 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(230, 240, 248, 0.95);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
         }
 
         header.scrolled {
             padding: 10px 0;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(230, 240, 248, 0.98);
         }
 
         .nav-container {
@@ -154,13 +162,57 @@
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Times New Roman', Times, serif;
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--dark-cyan);
+        }
+
+        .sun-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--yellow);
+            border-radius: 50%;
+            position: relative;
+            animation: sun-glow 3s infinite alternate;
+            box-shadow: 0 0 10px rgba(255, 203, 5, 0.5);
+        }
+
+        .sun-logo::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,203,5,0) 70%);
+        }
+
+        .sun-rays {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .sun-ray {
+            position: absolute;
+            width: 4px;
+            height: 12px;
+            background: var(--yellow);
+            border-radius: 2px;
+            top: 50%;
+            left: 50%;
+            transform-origin: 0 0;
         }
 
         .logo span {
-            color: var(--secondary);
+            color: var(--azure);
         }
 
         .nav-links {
@@ -173,7 +225,7 @@
         }
 
         .nav-links a {
-            color: var(--dark);
+            color: var(--black);
             font-weight: 600;
             position: relative;
         }
@@ -185,7 +237,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary);
+            background: var(--dark-cyan);
             transition: var(--transition);
         }
 
@@ -198,37 +250,21 @@
             cursor: pointer;
         }
 
-        /* Custom Cursor */
-        .cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--purple);
-            pointer-events: none;
-            mix-blend-mode: difference;
-            z-index: 9999;
-            transition: transform 0.2s ease;
+        @keyframes sun-glow {
+            0% {
+                box-shadow: 0 0 10px rgba(255, 203, 5, 0.5);
+            }
+            100% {
+                box-shadow: 0 0 20px rgba(255, 203, 5, 0.8);
+            }
         }
-
-        .cursor-follower {
-            position: fixed;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid rgba(122, 87, 194, 0.5);
-            pointer-events: none;
-            z-index: 9998;
-            transition: transform 0.6s ease;
-        }
-
 
         /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: var(--gradient);
             color: white;
             position: relative;
             overflow: hidden;
@@ -269,8 +305,8 @@
         }
 
         .hero .btn {
-            background: var(--accent);
-            color: var(--dark);
+            background: var(--yellow);
+            color: var(--black);
         }
 
         .hero .btn-outline {
@@ -281,12 +317,12 @@
 
         .hero .btn-outline:hover {
             background: white;
-            color: var(--primary);
+            color: var(--dark-cyan);
         }
 
         /* About Section */
         .about {
-            background: white;
+            background: var(--white);
         }
 
         .about-content {
@@ -299,7 +335,7 @@
         .about-img {
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(27, 109, 109, 0.15);
         }
 
         .about-img img {
@@ -316,7 +352,7 @@
         .about-text h3 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
-            color: var(--primary);
+            color: var(--dark-cyan);
         }
 
         .skills {
@@ -327,18 +363,18 @@
         }
 
         .skill {
-            background: var(--light);
+            background: var(--light-azure);
             padding: 0.5rem 1rem;
             border-radius: 30px;
             font-size: 0.9rem;
             font-weight: 600;
-            color: var(--primary);
-            border: 1px solid #e9ecef;
+            color: var(--dark-cyan);
+            border: 1px solid var(--pastel-gray-cyan);
         }
 
         /* Projects Section */
         .projects {
-            background: var(--light);
+            background: var(--light-azure);
         }
 
         .projects-grid {
@@ -353,11 +389,12 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
+            border: 1px solid var(--pastel-gray-cyan);
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(27, 109, 109, 0.15);
         }
 
         .project-img {
@@ -383,10 +420,11 @@
         .project-content h3 {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
+            color: var(--dark-cyan);
         }
 
         .project-content p {
-            color: var(--gray);
+            color: var(--black);
             font-size: 0.95rem;
             margin-bottom: 1rem;
         }
@@ -399,11 +437,11 @@
         }
 
         .project-tech span {
-            background: var(--light);
+            background: var(--light-azure);
             padding: 0.3rem 0.7rem;
             border-radius: 4px;
             font-size: 0.8rem;
-            color: var(--primary);
+            color: var(--dark-cyan);
             font-weight: 600;
         }
 
@@ -422,7 +460,7 @@
 
         /* Experience Section */
         .experience {
-            background: white;
+            background: var(--white);
         }
 
         .timeline {
@@ -435,11 +473,12 @@
             content: '';
             position: absolute;
             width: 4px;
-            background: var(--primary);
+            background: var(--dark-cyan);
             top: 0;
             bottom: 0;
             left: 50%;
             margin-left: -2px;
+            border-radius: 2px;
         }
 
         .timeline-item {
@@ -459,25 +498,26 @@
 
         .timeline-content {
             padding: 20px;
-            background: var(--light);
+            background: var(--light-azure);
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--pastel-gray-cyan);
         }
 
         .timeline-content h3 {
-            color: var(--primary);
+            color: var(--dark-cyan);
             margin-bottom: 0.5rem;
         }
 
         .timeline-date {
             font-weight: 600;
-            color: var(--secondary);
+            color: var(--azure);
             margin-bottom: 0.5rem;
         }
 
         .timeline-company {
             font-weight: 600;
-            color: var(--secondary);
+            color: var(--azure);
             margin-bottom: 0.5rem;
             font-size: 1.1rem;
         }
@@ -487,8 +527,8 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            background: var(--accent);
-            border: 4px solid var(--primary);
+            background: var(--yellow);
+            border: 4px solid var(--dark-cyan);
             border-radius: 50%;
             top: 15px;
             z-index: 1;
@@ -504,7 +544,7 @@
 
         /* Contact Section */
         .contact {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: var(--gradient);
             color: white;
         }
 
@@ -513,7 +553,7 @@
         }
 
         .contact .section-title h2::after {
-            background: var(--accent);
+            background: var(--yellow);
         }
 
         .contact-content {
@@ -578,13 +618,13 @@
         }
 
         .contact .btn {
-            background: var(--accent);
-            color: var(--dark);
+            background: var(--yellow);
+            color: var(--black);
         }
 
         /* Footer */
         footer {
-            background: var(--dark);
+            background: var(--black);
             color: white;
             padding: 3rem 0 1.5rem;
         }
@@ -608,7 +648,7 @@
         }
 
         .social-links a:hover {
-            color: var(--accent);
+            color: var(--yellow);
             transform: translateY(-5px);
         }
 
@@ -700,7 +740,12 @@
     <!-- Header & Navigation -->
     <header id="header">
         <div class="container nav-container">
-            <a href="#" class="logo">Tisha<span>Kaur</span></a>
+            <a href="#" class="logo">
+                <div class="sun-logo">
+                    <div class="sun-rays" id="sunRays"></div>
+                </div>
+                Tisha<span>Kaur</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -717,7 +762,7 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>Hi, I'm <span style="color: var(--accent)">Tisha Kaur</span></h1>
+                <h1>Hi, I'm <span style="color: var(--yellow)">Tisha Kaur</span></h1>
                 <p>Honors Computer Science Student at the University of Georgia</p>
                 <p>Passionate about software development, AI, and creating creative solutions to complex problems.</p>
                 <div class="hero-btns">
@@ -736,8 +781,7 @@
             </div>
             <div class="about-content">
                 <div class="about-img">
-                    <!-- Replace with your actual image -->
-                    <a href="https://ibb.co/Xk4mkdwt"><img src="https://i.ibb.co/R4SL4M5c/4140562-6461203-30-53960549.jpg" alt="4140562-6461203-30-53960549" border="0"></a> alt="Tisha Kaur">
+                    <img src="https://i.ibb.co/d05xvzQj/tisha-senior-photo-headshot.jpg" alt="Tisha Kaur">
                 </div>
                 <div class="about-text">
                     <h3>Computer Science Major at UGA</h3>
@@ -766,141 +810,200 @@
     </section>
 
     <!-- Projects Section -->
-<section class="projects" id="projects">
-    <div class="container">
-        <div class="section-title">
-            <h2>My Projects</h2>
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1: Vernacular -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://i.ibb.co/qLYLdBJy/vernacular-pic.jpg" alt="vernacular-pic">
+                    </div>
+                    <div class="project-content">
+                        <h3>Vernacular - Bengali AI Language Tutor</h3>
+                        <p>An AI-powered language learning platform that teaches Bengali through interactive conversations and personalized feedback using speech recognition and natural language processing.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>React</span>
+                            <span>Gemini API</span>
+                            <span>Speech Recognition</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://devpost.com/software/vernacular-8rd3k9" target="_blank" rel="noopener"><i class="fab fa-dev"></i> Devpost</a>
+                            <a href="https://github.com/josslynq/AiHackathon/tree/main" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2: BhangraHub -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://i.ibb.co/tTCZGkNz/bhangrahub-pic.jpg" alt="BhangraHub Platform">
+                    </div>
+                    <div class="project-content">
+                        <h3>BhangraHub</h3>
+                        <p>A comprehensive platform for Bhangra dance teams, competitions, and performers to connect, compete, and collaborate. Features team management, competition applications, and performer profiles.</p>
+                        <div class="project-tech">
+                            <span>Next.js 14</span>
+                            <span>TypeScript</span>
+                            <span>Tailwind CSS</span>
+                            <span>Supabase</span>
+                            <span>React Hook Form</span>
+                            <span>Framer Motion</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/yourusername/bhangrahub" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://bhangrahub.vercel.app" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3: BuckIt -->
+                <div class="project-card">
+                    <div class="project-img">
+                        
+                        <img src="https://i.ibb.co/mCfWmC5G/buckit-pic.jpg" alt="BuckIt Web Application">
+                    </div>
+                    <div class="project-content">
+                        <h3>BuckIt - Apocalypse-Themed Web Application</h3>
+                        <p>A progressive web app for bucket list sharing with an "End of the World" theme. Features offline access, real-time syncing, and dynamic goal tracking. Won 1st Place among 100+ participants.</p>
+                        <div class="project-tech">
+                            <span>React.js</span>
+                            <span>Firebase</span>
+                            <span>HTML & CSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/hasinisandra/HackThePeach" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4: Blossom -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://i.ibb.co/kg4Vy58N/blossom-pic.jpg" alt="Blossom Hackathon">
+                    </div>
+                    <div class="project-content">
+                        <h3>Blossom - Gender-Focused Coding Event</h3>
+                        <p>Hosted the largest gender-focused day of coding with Atlanta Girl Scouts to bridge the gender gap in technology. Led the Blot track (JavaScript powered robotic arm art).</p>
+                        <div class="project-tech">
+                            <span>JavaScript</span>
+                            <span>Python</span>
+                            <span>Event Planning</span>
+                            <span>STEM Education</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/hackclub/blossom" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://blossom.hackclub.com/" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Website</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5: Star Card -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://i.ibb.co/xKm090mg/starcard-pic.jpg" alt="Star Card Mental Wellness Platform">
+                    </div>
+                    <div class="project-content">
+                        <h3>STAR Card - Mental Wellness Platform</h3>
+                        <p>A full-stack mental wellness platform that helps users log mood, focus, and energy, offering personalized insights and motivation. Designed for emotional safety, privacy, and future AI integration.</p>
+                        <div class="project-tech">
+                            <span>TypeScript</span>
+                            <span>Vite</span>
+                            <span>Drizzle ORM</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Tkaur13git/STAR-CARD" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6: Cloud Cafe Game -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://i.ibb.co/BK3dsRWp/cloud-cafe-pic.jpg" alt="Cloud Cafe Game">
+                    </div>
+                    <div class="project-content">
+                        <h3>Cloud Cafe Game</h3>
+                        <p>Built a game using Unity for Hack Club's Juice initiative. A relaxing cafe simulation game with engaging mechanics and charming visuals.</p>
+                        <div class="project-tech">
+                            <span>Unity</span>
+                            <span>C#</span>
+                            <span>Blender</span>
+                            <span>UI/UX</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://statip.itch.io/cloud-cafe-wip" target="_blank" rel="noopener"><i class="fas fa-gamepad"></i> Play Game</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="projects-grid">
-            <!-- Project 1: Vernacular -->
-            <div class="project-card">
-                <div class="project-img">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="Vernacular Bengali AI Language Learning Tutor">
-                </div>
-                <div class="project-content">
-                    <h3>Vernacular - Bengali AI Language Tutor</h3>
-                    <p>An AI-powered language learning platform that teaches Bengali through interactive conversations and personalized feedback using speech recognition and natural language processing.</p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>TensorFlow</span>
-                        <span>React</span>
-                        <span>Google Cloud</span>
-                        <span>Speech Recognition</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://devpost.com/software/vernacular-8rd3k9" target="_blank" rel="noopener"><i class="fab fa-dev"></i> Devpost</a>
-                        <a href="https://github.com/josslynq/AiHackathon/tree/main" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Project 2: BhangraHub -->
-            <div class="project-card">
-                <div class="project-img">
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="BhangraHub Platform">
-                </div>
-                <div class="project-content">
-                    <h3>BhangraHub</h3>
-                    <p>A comprehensive platform for Bhangra dance teams, competitions, and performers to connect, compete, and collaborate. Features team management, competition applications, and performer profiles.</p>
-                    <div class="project-tech">
-                        <span>Next.js 14</span>
-                        <span>TypeScript</span>
-                        <span>Tailwind CSS</span>
-                        <span>Supabase</span>
-                        <span>React Hook Form</span>
-                        <span>Framer Motion</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/yourusername/bhangrahub" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
-                        <a href="https://bhangrahub.vercel.app" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Project 3: BuckIt -->
-            <div class="project-card">
-                <div class="project-img">
-                    <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="BuckIt PWA">
-                </div>
-                <div class="project-content">
-                    <h3>BuckIt - Apocalypse-Themed PWA</h3>
-                    <p>A progressive web app for bucket list sharing with an "End of the World" theme. Features offline access, real-time syncing, and dynamic goal tracking. Won 1st Place among 100+ participants.</p>
-                    <div class="project-tech">
-                        <span>React.js</span>
-                        <span>Firebase</span>
-                        <span>Service Workers</span>
-                        <span>PWA</span>
-                        <span>Real-time Sync</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/hasinisandra/HackThePeach" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!-- Experience Section -->
-<section class="experience" id="experience">
-    <div class="container">
-        <div class="section-title">
-            <h2>Experience & Education</h2>
-        </div>
-        <div class="timeline">
-            <!-- Experience 1: Software Engineer Intern -->
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>Software Engineer Intern</h3>
-                    <div class="timeline-company">CareTechPros: Healthcare & IT Staffing Company</div>
-                    <div class="timeline-date">June 2025 - August 2025</div>
-                    <p>Engineered and deployed a web application for a healthcare and IT staffing company, streamlining the hiring process for clients in a fast-paced startup environment. Implemented features using React.js, Node.js, and REST APIs, and managed version control with Git/GitHub.</p>
-                </div>
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Experience & Education</h2>
             </div>
-            
-            <!-- Education 1 -->
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>University of Georgia</h3>
-                    <div class="timeline-date">2025 - Present</div>
-                    <p>Bachelor of Science in Computer Science</p>
-                    <p>GPA: 4.0/4.0</p>
-                    <p><strong>Campus Involvements:</strong> Kappa Theta Pi Technology Fraternity, Classic City Bhangra, Alternate Investment Society, Sikh Student Association</p>
+            <div class="timeline">
+                
+                <!-- Education 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>University of Georgia</h3>
+                        <div class="timeline-date">2025 - Present</div>
+                        <p>Bachelor of Science in Computer Science</p>
+                        <p>GPA: 4.0/4.0</p>
+                        <p><strong>Campus Involvements:</strong> Kappa Theta Pi Technology Fraternity, Classic City Bhangra, Alternate Investment Society, Sikh Student Association</p>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Experience 2: Technology Lead -->
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>Technology Lead & National Co-Chair</h3>
-                    <div class="timeline-company">Sikh American National Youth Council (SANYC)</div>
-                    <div class="timeline-date">August 2024 - Present</div>
-                    <p>Rebuilding youth advocacy platform with accessibility and scalability in mind, expanding reach to 1,000+ online users. Designing digital campaigns that tripled Gen Z engagement, applying UI/UX and product design principles to advocacy.</p>
+                
+                <!-- Experience 1: Software Engineer Intern -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Software Engineer Intern</h3>
+                        <div class="timeline-company">CareTechPros: Healthcare & IT Staffing Company</div>
+                        <div class="timeline-date">June 2025 - August 2025</div>
+                        <p>Engineered and deployed a web application for a healthcare and IT staffing company, streamlining the hiring process for clients in a fast-paced startup environment. Implemented features using React.js, Node.js, and REST APIs, and managed version control with Git/GitHub.</p>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Experience 3: Full-Stack Developer -->
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>Full-Stack Developer & Hackathon Organizer</h3>
-                    <div class="timeline-company">Hack Club (Blossom, Athena)</div>
-                    <div class="timeline-date">November 2023 - July 2025</div>
-                    <p>Designed and built "Koala Kooler," an IoT system with sensors + dashboard to reduce food waste; won Most Innovative Project at Wonderland Hackathon. Organized Blossom, Atlanta's largest gender-focused day of coding for Girl Scouts. Produced and managed Athena, a women-in-STEM empowerment event.</p>
+                
+                <!-- Experience 2: Technology Lead -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Technology Lead & National Co-Chair</h3>
+                        <div class="timeline-company">Sikh American National Youth Council (SANYC)</div>
+                        <div class="timeline-date">August 2024 - Present</div>
+                        <p>Rebuilding youth advocacy platform with accessibility and scalability in mind, expanding reach to 1,000+ online users. Designing digital campaigns that tripled Gen Z engagement, applying UI/UX and product design principles to advocacy.</p>
+                    </div>
                 </div>
-            </div>
+                
+                <!-- Experience 3: Full-Stack Developer -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Full-Stack Developer & Hackathon Organizer</h3>
+                        <div class="timeline-company">Hack Club (Blossom, Athena)</div>
+                        <div class="timeline-date">November 2023 - July 2025</div>
+                        <p>Designed and built "Koala Kooler," an IoT system with sensors + dashboard to reduce food waste; won Most Innovative Project at Wonderland Hackathon. Organized Blossom, Atlanta's largest gender-focused day of coding for Girl Scouts. Produced and managed Athena, a women-in-STEM empowerment event.</p>
+                    </div>
+                </div>
 
-            <!-- Experience 4: FinTech Coordinator -->
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3>Financial Technology Coordinator</h3>
-                    <div class="timeline-company">TecBridge (Digital Equity Nonprofit)</div>
-                    <div class="timeline-date">May 2023 - May 2025</div>
-                    <p>Automated donation tracking with Google Apps Script + Airtable API, improving accuracy by 40%. Led fundraising initiatives raising $1K+ for global device access. Wrote 5+ technical editorials in tech policy, features, current events, and technical innovation niches.</p>
+                <!-- Experience 4: FinTech Coordinator -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Financial Technology Coordinator</h3>
+                        <div class="timeline-company">TecBridge (Digital Equity Nonprofit)</div>
+                        <div class="timeline-date">May 2023 - May 2025</div>
+                        <p>Automated donation tracking with Google Apps Script + Airtable API, improving accuracy by 40%. Led fundraising initiatives raising $1K+ for global device access. Wrote 5+ technical editorials in tech policy, features, current events, and technical innovation niches.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
@@ -944,7 +1047,7 @@
                         </div>
                         <div>
                             <h3>Resume</h3>
-                            <p><a href="https://docs.google.com/document/d/1P4vzDuo5I7ZZD2aGfAno5xfxjt84MvOBaJBKXit_aZU/edit?usp=sharing" style="color: white; text-decoration: underline;">Download PDF</a></p>
+                            <p><a href="https://drive.google.com/file/d/1840qeW8TUMBNLiGZPVOm9h1EBA4HvSPl/view?usp=sharing" style="color: white; text-decoration: underline;">Download PDF</a></p>
                         </div>
                     </div>
                 </div>
@@ -964,73 +1067,4 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="logo">Tisha<span>Kaur</span></div>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/tisha-kaur/"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/Tkaur13git"><i class="fab fa-github"></i></a>
-                    <a href="https://x.com/TishaKaur13"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/_tishakaur_/?hl=en"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-          <div class="copyright">
-    <p>&copy; 2025 Tisha Kaur. Made with ❤️</p>
-</div>
-</div>
-</footer>
-
-    <script>
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset();
-        });
-
-        // Mobile menu toggle
-        document.querySelector('.hamburger').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-    </script>
-</body>
-</html>
+                            <textarea
